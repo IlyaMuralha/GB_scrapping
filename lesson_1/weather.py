@@ -12,5 +12,5 @@ response = requests.get(url, params=my_params, headers=my_headers)
 data = response.json()
 j_city = data['name']
 j_temp = int(data['main']['temp'] - 273.15)
-# pprint(data)
+pprint(data)
 print(f"На данный момент в городе {j_city} температура воздуха {j_temp:.0f} градусов")
