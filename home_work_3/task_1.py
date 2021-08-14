@@ -2,9 +2,16 @@ from bs4 import BeautifulSoup as bs
 import requests
 from pprint import pprint
 
+from pymongo import MongoClient
+
 my_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                             'Chrome/92.0.4515.131 Safari/537.36'}
 url = 'https://hh.ru'
+search_key = 'Django'
+
+client = MongoClient('127.0.0.1', 27017)
+db = client['HH']
+collect_vacancies = db['search_key']
 
 
 def get_salary(salary: str) -> tuple:
@@ -43,7 +50,7 @@ while True:
         'ored_clusters': 'true',
         'enable_snippets': 'true',
         'st': 'searchVacancy',
-        'text': 'Django',
+        'text': search_key,
         'from': 'suggest_post',
         'area': '113',
         'page': page,
@@ -65,14 +72,14 @@ while True:
                     0].getText()
             except Exception as err:
                 print(f'{type(err)}:\n{err}')
-                vacancy_descrip = ''
+                vacancy_descrip = ' '
             try:
                 vacancy_stack = vacancy.findAll('div',
                                                 attrs={'data-qa': 'vacancy-serp__vacancy_snippet_requirement'})[
                     0].getText()
             except Exception as err:
                 print(f'{type(err)}:\n{err}')
-                vacancy_stack = ''
+                vacancy_stack = ' '
             vacancy_salary = vacancy.findAll('div', attrs={'class': 'vacancy-serp-item__sidebar'})[0].text
             min_salary, max_salary, currency = get_salary(vacancy_salary)
 
@@ -89,5 +96,22 @@ while True:
         break
     page += 1
 
-pprint(vacancies)
+for vacancy in vacancies:
+    collect_vacancies.update_one(
+        {'link': vacancy['link']},
+        {'$set': vacancy},
+        upsert=True
+    )
+# pprint(vacancies)
 print(len(vacancies))
+
+for vacancy in collect_vacancies.find(
+        {'$or': [
+            {'min_salary': {'$gt': 200000}},
+            {'max_salary': {'$gt': 200000}},
+        ]}
+):
+    pprint(vacancy)
+
+count = collect_vacancies.count_documents({})
+print(count)
