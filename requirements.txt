@@ -8,3 +8,4 @@ bs4
 soupsieve
 pymongo
 lxml
+selenium==3.141

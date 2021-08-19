@@ -24,8 +24,7 @@ for item in items_news:
     news = {}
     text_news = item.xpath('.//a[1]/text()')
     link_news = item.xpath('./a[1]/@href')
-    dt_news = item.xpath(
-        './/time[@class="g-time"]/@datetime')
+    dt_news = item.xpath('.//time[@class="g-time"]/@datetime')
 
     news['text'] = str(text_news).replace('[', '').replace(']', '').replace("'", "").replace('\\xa0', ' ')
     news['link'] = url + str(link_news).replace('[', '').replace(']', '').replace("'", "")
