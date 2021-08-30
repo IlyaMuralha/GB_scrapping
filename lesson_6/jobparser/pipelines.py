@@ -70,7 +70,7 @@ class JobparserPipeline:
 
         collection = self.mongo_base[spider.name]
         collection.update_one(
-            {'link': item['link']},
+            {'url': item['url']},
             {'$set': item},
             upsert=True
         )
