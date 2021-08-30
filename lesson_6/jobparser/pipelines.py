@@ -67,6 +67,7 @@ class JobparserPipeline:
         item['min_salary'] = min_salary
         item['max_salary'] = max_salary
         item['currency'] = currency
+        item['site_name'] = str(item['site_name']).replace("[", "").replace("]", "").replace("'", "")
 
         collection = self.mongo_base[spider.name]
         collection.update_one(
