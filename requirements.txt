@@ -9,3 +9,4 @@ soupsieve
 pymongo
 lxml
 selenium==3.141
+scrapy
