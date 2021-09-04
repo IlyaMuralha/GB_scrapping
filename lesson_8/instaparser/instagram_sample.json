@@ -1,0 +1,7 @@
+{
+  "insta_login": "insta_login",
+  "insta_password": "hash_insta_password",
+  "graphql_url": "graphql_url",
+  "query_posts_hash": "query_posts_hash",
+  "query_post_hash": "query_post_hash"
+}
