@@ -11,6 +11,6 @@ if __name__ == '__main__':
     # search = input()
 
     process = CrawlerProcess(settings=crawler_settings)
-    process.crawl(LeroyruSpider, search='велосипед')
+    process.crawl(LeroyruSpider)
 
     process.start()
