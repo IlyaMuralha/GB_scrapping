@@ -1,3 +1,4 @@
 .idea
 __pycache__/
-pars_env
+parsenv
+instagram.json
