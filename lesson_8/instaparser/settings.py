@@ -16,8 +16,10 @@ LOG_ENABLED = True
 LOG_LEVEL = 'DEBUG'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' \
-             'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
+# USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' \
+#              'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
+
+USER_AGENT = 'Instagram 155.0.0.37.107'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False

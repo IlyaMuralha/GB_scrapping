@@ -53,15 +53,15 @@ COOKIES_ENABLED = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'avitoparser.middlewares.AvitoparserSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   'avitoparser.avitoparser.middlewares.AvitoparserSpiderMiddleware': 543,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'avitoparser.middlewares.AvitoparserDownloaderMiddleware': 543,
-#}
+# DOWNLOADER_MIDDLEWARES = {
+#    'avitoparser.avitoparser.middlewares.AvitoparserDownloaderMiddleware': 543,
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html

@@ -16,14 +16,14 @@ class InstaSpider(scrapy.Spider):
     insta_login_link = 'https://www.instagram.com/accounts/login/ajax/'
     user_parse = 'ai_machine_learning'
 
-    # with open('./instagram.json', 'r') as f:
-    #     INSTA = json.load(f)
-    #
-    #     insta_login = INSTA['insta_login']
-    #     insta_password = INSTA['insta_password']
-    #     graphql_url = INSTA['graphql_url']
-    #     query_posts_hash = INSTA['query_posts_hash']
-    #     query_post_hash = INSTA['query_post_hash']
+    with open('./instagram.json', 'r') as f:
+        INSTA = json.load(f)
+
+        insta_login = INSTA['insta_login']
+        insta_password = INSTA['insta_password']
+        graphql_url = INSTA['graphql_url']
+        query_posts_hash = INSTA['query_posts_hash']
+        query_post_hash = INSTA['query_post_hash']
 
     def parse(self, response: HtmlResponse):
         csrf = self.get_csrf_token(response.text)
@@ -31,7 +31,7 @@ class InstaSpider(scrapy.Spider):
                                  method='POST',
                                  callback=self.login,
                                  formdata={
-                                     'username': "kuznizza", 'enc_password': "#PWD_INSTAGRAM_BROWSER:10:1630736374:AV1QAHXfFcarr9JQh4rtjg/VZc9gFCSYza/I+TnHNYDq6vhJ5B2IuQjXZhLYmdxO/TtrYKpOoRMYZ5GHiiLQQ1teQew0Vxd3ajO1hF1HkP1ZuI7PiLk81h1TYR582JatIhA8g/vPdsCTc7IzcQAZk0IO"
+                                     'username': insta_login, 'enc_password': insta_password
                                  },
                                  headers={'x-csrftoken': csrf})
 
