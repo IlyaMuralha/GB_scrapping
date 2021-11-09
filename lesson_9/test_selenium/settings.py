@@ -6,6 +6,9 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 BOT_NAME = 'test_selenium'
 
@@ -17,8 +20,7 @@ LOG_LEVEL = 'DEBUG'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' \
-             'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
+USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -60,7 +62,7 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 SELENIUM_DRIVER_NAME = 'chrome'
-SELENIUM_DRIVER_EXECUTABLE_PATH = './chromedriver.exe'
+SELENIUM_DRIVER_EXECUTABLE_PATH = BASE_DIR / 'chromedriver'
 SELENIUM_DRIVER_ARGUMENTS = ['start-maximized']
 
 # Enable or disable extensions
